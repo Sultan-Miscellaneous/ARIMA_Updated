@@ -1,0 +1,32 @@
+loading data
+running Dickey-Fuller Test:
+Test Statistic                    1.013914
+p-value                           0.994411
+#Lags Used                       13.000000
+Number of Observations Used    2722.000000
+dtype: float64
+running Dickey-Fuller Test:
+Test Statistic                -1.302718e+01
+p-value                        2.386153e-24
+#Lags Used                     1.200000e+01
+Number of Observations Used    2.722000e+03
+dtype: float64
+fitting arema model
+Fit ARIMA: order=(10, 1, 0); AIC=8084.199, BIC=8154.169, Fit time=1.300 seconds
+Fit ARIMA: order=(0, 1, 0); AIC=8144.338, BIC=8156.000, Fit time=0.003 seconds
+Fit ARIMA: order=(1, 1, 0); AIC=8080.874, BIC=8098.367, Fit time=0.019 seconds
+Fit ARIMA: order=(0, 1, 1); AIC=8084.724, BIC=8102.216, Fit time=0.027 seconds
+Fit ARIMA: order=(2, 1, 0); AIC=8081.582, BIC=8104.906, Fit time=0.031 seconds
+Fit ARIMA: order=(1, 1, 1); AIC=8081.235, BIC=8104.559, Fit time=0.199 seconds
+Fit ARIMA: order=(2, 1, 1); AIC=8080.276, BIC=8109.430, Fit time=0.426 seconds
+Fit ARIMA: order=(3, 1, 1); AIC=8084.238, BIC=8119.223, Fit time=0.289 seconds
+Fit ARIMA: order=(2, 1, 2); AIC=8084.398, BIC=8119.383, Fit time=0.333 seconds
+Fit ARIMA: order=(3, 1, 2); AIC=8067.764, BIC=8108.580, Fit time=0.869 seconds
+Fit ARIMA: order=(4, 1, 2); AIC=8077.897, BIC=8124.543, Fit time=1.788 seconds
+Fit ARIMA: order=(3, 1, 3); AIC=8069.143, BIC=8115.790, Fit time=1.408 seconds
+Fit ARIMA: order=(4, 1, 3); AIC=8073.542, BIC=8126.020, Fit time=2.132 seconds
+Total fit time: 8.825 seconds
+final arima order 
+ 
+
+(3, 1, 2)

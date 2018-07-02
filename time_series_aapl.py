@@ -52,6 +52,9 @@ def main():
     first_difference.plot()
     plt.title('data after differencing')
     plt.show()
+    autocorrelation_plot(data)
+    plt.title('autocorrelation of data')
+    plt.show()
     autocorrelation_plot(first_difference)
     plt.title('autocorrelation of data after differencing')
     plt.show()
@@ -61,7 +64,7 @@ def main():
     plt.title('autocorrelation of random number array')
     plt.show()
 
-    print 'auto correlation shows near random signal'
+    print 'fitting arema model'
 
     # result = seasonal_decompose(data, model='multiplicative', freq = 6)
 
@@ -75,30 +78,30 @@ def main():
     train = data.loc['2007-01-01':'2016-12-31']
     test = data.loc['2017-01-01':]
 
-    stepwise_model = auto_arima(train, start_p=0, start_q=0,
-                                max_p=50, max_q=50, max_d=50, m=365,
+    stepwise_model = auto_arima(train, start_p=10, start_q=0,
+                                max_p=1000, max_q=1000, max_d=1000, max_order= 1000, m=365,
                                 start_P=0, seasonal=False,
                                 d=1, D=1, trace=True,
                                 suppress_warnings=True,
                                 stepwise=True)
 
+    print 'final arima order \n \n'
+    print stepwise_model.order
     stepwise_model.fit(train)
     future_forecast = stepwise_model.predict(n_periods=len(test['open']))
 
     # print(future_forecast)
     future_forecast = pd.DataFrame(future_forecast, index=test.index, columns=['Prediction'])
 
-    future_forecast.plot()
-    plt.title('forecast for 2017')
+    future_forecast.plot(title='forecast for 2017')
     plt.show()
 
-    test.plot()
-    plt.title('actual data for 2017')
+    test.plot(title='actual data for 2017')
     plt.show()
 
     prediction_error = pd.DataFrame((future_forecast['Prediction'] - test['open'])**2, index=test.index)
-    prediction_error.plot()
-    plt.title('error')
+    prediction_error_monthly = (prediction_error.groupby(pd.Grouper(freq='M')).mean())**0.5
+    prediction_error_monthly.plot(title ='Monthly mean square error')
     plt.show()
 
 
